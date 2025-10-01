@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spelling Flashcards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f8ff;
+    }
+    .flashcard {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      width: 60%;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #statsDisplay {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spelling Flashcards</h1>
+  <div class="flashcard">
+    <h2 id="wordDisplay"></h2>
+    <p id="definitionDisplay">(Definition hidden)</p>
+    <button id="showBtn">Show Definition</button>
+    <br/>
+    <button id="correctBtn" disabled>Correct</button>
+    <button id="incorrectBtn" disabled>Incorrect</button>
+  </div>
+  <div id="statsDisplay"></div>
+
+  <script>
+    // Sample flashcards (expand this array with all spelling words as needed)
+    let flashcards = [
+      {
+        word: "eight",
+        definition: "The number 8",
+        pos: "noun/number",
+        interval: 10, // in seconds (for demo purposes)
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "eighth",
+        definition: "Position after seven others",
+        pos: "adjective/noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "height",
+        definition: "How tall something is",
+        pos: "noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "weight",
+        definition: "How heavy something is",
+        pos: "noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "straight",
+        definition: "In one unbroken line; not curved",
+        pos: "adjective/adverb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "enough",
+        definition: "As much as is needed; sufficient",
+        pos: "adj./adv.",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "though",
+        definition: "In spite of something; however",
+        pos: "conjunction",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "thought",
+        definition: "An idea or the process of thinking",
+        pos: "noun/verb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "through",
+        definition: "Moving in one side and out the other",
+        pos: "preposition/adverb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "caught",
+        definition: "Captured or seized (past tense)",
+        pos: "verb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "naughty",
+        definition: "Behaving badly or disobediently",
+        pos: "adjective",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      }
+      // Add more flashcards here...
+    ];
+
+    // Key for saving data in localStorage
+    const STORAGE_KEY = "flashcards_data";
+
+    // Load flashcards data from localStorage if available
+    function loadFlashcards() {
+      const storedData = localStorage.getItem(STORAGE_KEY);
+      if (storedData) {
+        flashcards = JSON.parse(storedData);
+      } else {
+        saveFlashcards();
+      }
+    }
+
+    // Save flashcards data to localStorage
+    function saveFlashcards() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(flashcards));
+    }
+
+    // DOM elements
+    const wordDisplay = document.getElementById("wordDisplay");
+    const definitionDisplay = document.getElementById("definitionDisplay");
+    const showBtn = document.getElementById("showBtn");
+    const correctBtn = document.getElementById("correctBtn");
+    const incorrectBtn = document.getElementById("incorrectBtn");
+    const statsDisplay = document.getElementById("statsDisplay");
+
+    let currentCard = null;
+
+    // Update the stats display (total cards, attempts, and correct answers)
+    function updateStats() {
+      const total = flashcards.length;
+      const reviewed = flashcards.reduce((sum, card) => sum + card.attempts, 0);
+      const correct = flashcards.reduce((sum, card) => sum + card.correct, 0);
+      statsDisplay.textContent = `Total cards: ${total} | Reviewed attempts: ${reviewed} | Correct answers: ${correct}`;
+    }
+
+    // Pick the next flashcard that is due for review
+    function nextCard() {
+      const now = Date.now();
+      const dueCards = flashcards.filter(card => card.nextReview <= now);
+      if (dueCards.length === 0) {
+        wordDisplay.textContent = "No cards due now. Please wait...";
+        definitionDisplay.textContent = "";
+        showBtn.disabled = true;
+        correctBtn.disabled = true;
+        incorrectBtn.disabled = true;
+        // Check again after 5 seconds
+        setTimeout(nextCard, 5000);
+      } else {
+        currentCard = dueCards[0];
+        wordDisplay.textContent = currentCard.word;
+        definitionDisplay.textContent = "(Definition hidden)";
+        showBtn.disabled = false;
+        correctBtn.disabled = true;
+        incorrectBtn.disabled = true;
+        updateStats();
+      }
+    }
+
+    // Show the definition for the current flashcard
+    showBtn.addEventListener("click", () => {
+      if (currentCard) {
+        definitionDisplay.textContent = `${currentCard.definition} (${currentCard.pos})`;
+        showBtn.disabled = true;
+        correctBtn.disabled = false;
+        incorrectBtn.disabled = false;
+      }
+    });
+
+    // Record the user's answer and update spaced-repetition data
+    function recordAnswer(isCorrect) {
+      if (!currentCard) return;
+      currentCard.attempts += 1;
+      if (isCorrect) {
+        currentCard.correct += 1;
+        currentCard.repetitions += 1;
+        // Increase the interval (doubling for this demo, measured in seconds)
+        currentCard.interval *= 2;
+      } else {
+        currentCard.repetitions = 0;
+        // Reset interval to 10 seconds after an incorrect response
+        currentCard.interval = 10;
+      }
+      // Schedule the next review (current time plus the interval, converted to milliseconds)
+      currentCard.nextReview = Date.now() + currentCard.interval * 1000;
+      saveFlashcards();
+      nextCard();
+    }
+
+    correctBtn.addEventListener("click", () => recordAnswer(true));
+    incorrectBtn.addEventListener("click", () => recordAnswer(false));
+
+    // Initialize the app
+    loadFlashcards();
+    nextCard();
+  </script>
+</body>
+</html>

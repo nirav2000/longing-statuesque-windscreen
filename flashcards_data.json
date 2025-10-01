@@ -1,0 +1,1092 @@
+[
+  {
+    "word": "accident",
+    "definition": "An unexpected event that happens by chance",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "accidentally",
+    "definition": "By chance, not on purpose",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "actual",
+    "definition": "Real or existing in fact",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "actually",
+    "definition": "Truly; in fact",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "address",
+    "definition": "Details of a place or to speak to someone",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "answer",
+    "definition": "A response to a question",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "appear",
+    "definition": "To come into view or become visible",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "arrive",
+    "definition": "To reach a destination",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "believe",
+    "definition": "To accept something as true",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "bicycle",
+    "definition": "A two-wheeled vehicle you pedal",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "breath",
+    "definition": "Air taken in or let out by the lungs",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "breathe",
+    "definition": "To take air into and let it out of the lungs",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "build",
+    "definition": "To construct or make something",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "busy",
+    "definition": "Having a lot to do",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "business",
+    "definition": "A company or the activity of buying and selling",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "calendar",
+    "definition": "A chart of days, weeks, and months",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "caught",
+    "definition": "Seized or captured (past tense)",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "centre",
+    "definition": "The middle point of something (UK spelling)",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "century",
+    "definition": "A period of 100 years",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "certain",
+    "definition": "Sure or without doubt",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "circle",
+    "definition": "A round shape with no corners",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "complete",
+    "definition": "Finished or having all parts",
+    "pos": "verb/adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "consider",
+    "definition": "To think about carefully",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "continue",
+    "definition": "To keep going or carry on",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "decide",
+    "definition": "To make a choice or come to a conclusion",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "describe",
+    "definition": "To say or write what something is like",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "different",
+    "definition": "Not the same as another",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "difficult",
+    "definition": "Hard to do or understand",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "disappear",
+    "definition": "To go out of sight or vanish",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "early",
+    "definition": "Happening before the usual time",
+    "pos": "adjective/adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "earth",
+    "definition": "The planet we live on; soil or ground",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "eight",
+    "definition": "The number 8",
+    "pos": "noun/number",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "eighth",
+    "definition": "Position after seven others",
+    "pos": "adjective/noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "enough",
+    "definition": "As much as is needed; sufficient",
+    "pos": "adjective/adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "exercise",
+    "definition": "Physical activity to keep healthy",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "experience",
+    "definition": "Knowledge gained by doing things; to go through something",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "experiment",
+    "definition": "A test to discover or prove something",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "extreme",
+    "definition": "Very great in degree; far from normal",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "famous",
+    "definition": "Well known by many people",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "favourite",
+    "definition": "Preferred above all others",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "February",
+    "definition": "The second month of the year",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "forward",
+    "definition": "Toward the front",
+    "pos": "adverb/adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "forwards",
+    "definition": "In a forward direction",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "fruit",
+    "definition": "An edible part of a plant containing seeds",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "grammar",
+    "definition": "Rules for speaking or writing a language",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "group",
+    "definition": "A number of things or people together",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "guard",
+    "definition": "To protect or watch over; a person who protects",
+    "pos": "verb/noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "guide",
+    "definition": "To show the way; a person who leads",
+    "pos": "verb/noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "heard",
+    "definition": "Past tense of hear (to perceive sound)",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "heart",
+    "definition": "The organ that pumps blood; center of emotions",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "height",
+    "definition": "How tall someone or something is",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "history",
+    "definition": "Events of the past; the study of past events",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "imagine",
+    "definition": "To form a picture in your mind",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "increase",
+    "definition": "To become or make greater",
+    "pos": "verb/noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "important",
+    "definition": "Of great value or significance",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "interest",
+    "definition": "Wanting to learn more; also a charge on borrowed money",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "island",
+    "definition": "A piece of land surrounded by water",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "knowledge",
+    "definition": "Information or understanding gained through learning",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "learn",
+    "definition": "To gain knowledge or skill",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "length",
+    "definition": "Measurement of something from end to end",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "library",
+    "definition": "A place with books for reading or borrowing",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "material",
+    "definition": "A substance used to make things",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "medicine",
+    "definition": "A substance used to treat illness",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "mention",
+    "definition": "To refer to briefly in speech or writing",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "minute",
+    "definition": "A period of 60 seconds; also very small",
+    "pos": "noun/adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "natural",
+    "definition": "Found in nature, not made by people",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "naughty",
+    "definition": "Behaving badly or disobediently",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "notice",
+    "definition": "To observe or become aware of",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "occasion",
+    "definition": "A particular event or time",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "occasionally",
+    "definition": "Sometimes; not often",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "often",
+    "definition": "Frequently; many times",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "opposite",
+    "definition": "Completely different; across from",
+    "pos": "adjective/noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "ordinary",
+    "definition": "Normal or usual",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "particular",
+    "definition": "Specific or special",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "peculiar",
+    "definition": "Strange or odd",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "perhaps",
+    "definition": "Maybe; possibly",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "popular",
+    "definition": "Liked or enjoyed by many people",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "position",
+    "definition": "A place or location where something is",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "possess",
+    "definition": "To own or have",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "possession",
+    "definition": "Something owned",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "possible",
+    "definition": "Able to be done or achieved",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "potatoes",
+    "definition": "Starchy tubers that grow underground",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "pressure",
+    "definition": "The force applied on something; a stressful feeling",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "probably",
+    "definition": "Likely to happen or be true",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "promise",
+    "definition": "To say you will definitely do something",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "purpose",
+    "definition": "The reason for doing something",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "quarter",
+    "definition": "One of four equal parts of something",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "question",
+    "definition": "A sentence used to ask for information",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "recent",
+    "definition": "Happened not long ago",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "regular",
+    "definition": "Happening often or in a pattern",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "reign",
+    "definition": "Rule of a king or queen; to rule",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "remember",
+    "definition": "To recall from memory",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "sentence",
+    "definition": "A group of words expressing a statement, question, or command",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "separate",
+    "definition": "To set or keep apart; not joined",
+    "pos": "verb/adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "special",
+    "definition": "Better, greater, or different from what is usual",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "straight",
+    "definition": "Without a curve or bend",
+    "pos": "adjective/adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "strange",
+    "definition": "Unusual or surprising in a way that is odd",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "strength",
+    "definition": "Being strong or able to do something well",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "suppose",
+    "definition": "To guess or think something is true",
+    "pos": "verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "surprise",
+    "definition": "An unexpected event; to amaze someone",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "therefore",
+    "definition": "For that reason; as a result",
+    "pos": "adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "though",
+    "definition": "Despite the fact; however",
+    "pos": "conjunction",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "although",
+    "definition": "Even though; in spite of the fact",
+    "pos": "conjunction",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "thought",
+    "definition": "An idea or the act of thinking",
+    "pos": "noun/verb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "through",
+    "definition": "From one side or end to the other",
+    "pos": "preposition/adverb",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "various",
+    "definition": "Of different kinds or types",
+    "pos": "adjective",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "weight",
+    "definition": "How heavy something is",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "woman",
+    "definition": "An adult female person",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  },
+  {
+    "word": "women",
+    "definition": "Plural of woman",
+    "pos": "noun",
+    "interval": 10,
+    "nextReview": 0,
+    "repetitions": 0,
+    "correct": 0,
+    "attempts": 0
+  }
+]

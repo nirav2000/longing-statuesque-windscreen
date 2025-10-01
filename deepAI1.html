@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spelling Flashcards dAI1 (Voice Mode with Cleaned Transcript Display)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f8ff;
+    }
+    .flashcard {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      width: 60%;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+      transition: box-shadow 0.3s;
+    }
+    .flashcard:hover {
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    #message {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #333;
+    }
+    #transcriptDisplay {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #555;
+    }
+    #statsDisplay {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    #startButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 20px;
+      cursor: pointer;
+    }
+    #startButton:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spelling Flashcards dAI1 (Voice Mode with Cleaned Transcript Display)</h1>
+  <button id="startButton">Start Practice</button>
+  <div class="flashcard" id="flashcardContainer" style="display: none;">
+    <h2 id="wordDisplay"></h2>
+    <p id="message" aria-live="polite">(Waiting for voice input...)</p>
+    <p id="transcriptDisplay" aria-live="polite"></p>
+  </div>
+  <div id="statsDisplay"></div>
+
+  <script>
+    let flashcards = [
+      { word: "eight", definition: "The number 8", pos: "noun/number", interval: 10, nextReview: Date.now(), repetitions: 0, correct: 0, attempts: 0 },
+      { word: "eighth", definition: "Position after seven others", pos: "adjective/noun", interval: 10, nextReview: Date.now(), repetitions: 0, correct: 0, attempts: 0 }
+    ];
+
+    const STORAGE_KEY = "flashcards_data";
+
+    function loadFlashcards() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        flashcards = JSON.parse(stored);
+      } else {
+        saveFlashcards();
+      }
+    }
+
+    function saveFlashcards() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(flashcards));
+    }
+
+    const wordDisplay = document.getElementById("wordDisplay");
+    const messageDisplay = document.getElementById("message");
+    const transcriptDisplay = document.getElementById("transcriptDisplay");
+    const statsDisplay = document.getElementById("statsDisplay");
+    const flashcardContainer = document.getElementById("flashcardContainer");
+    const startButton = document.getElementById("startButton");
+
+    let currentCard = null;
+    let accumulatedTranscript = "";
+    let recognitionTimer = null;
+    let maxRecognitionTimer = null;
+
+    function updateStats() {
+      const total = flashcards.length;
+      const reviewed = flashcards.reduce((sum, card) => sum + card.attempts, 0);
+      const correct = flashcards.reduce((sum, card) => sum + card.correct, 0);
+      statsDisplay.textContent = `Total cards: ${total} | Attempts: ${reviewed} | Correct: ${correct}`;
+    }
+
+    function speakText(text, callback) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.onend = callback;
+      utterance.onerror = (e) => {
+        console.error("Speech synthesis error:", e);
+        callback();
+      };
+      speechSynthesis.speak(utterance);
+    }
+
+    function cleanSpokenInput(text) {
+      text = text.toLowerCase();
+      text = text.replace(/[^\w\s]/g, "");
+      const fillers = ["i think", "its", "the word is", "spelled", "letter", "letters", "um", "uh", "like"];
+      fillers.forEach(filler => text = text.replace(new RegExp(`\\b${filler}\\b`, "g"), ""));
+      text = text.replace(/\s+/g, " ").trim();
+      const tokens = text.split(" ");
+      return tokens.every(token => token.length === 1) ? tokens.join("") : text.replace(/\s/g, "");
+    }
+
+    function processTranscript(transcript) {
+      console.log("Final transcript before cleaning:", transcript);
+      const cleaned = cleanSpokenInput(transcript).trim();
+      const expected = currentCard.word.toLowerCase().replace(/\s/g, "");
+      if (cleaned === expected) {
+        speakText("Correct", () => { recordAnswer(true); });
+      } else {
+        speakText(`Incorrect. The correct spelling is ${spellOutWord(currentCard.word)}`, () => { recordAnswer(false); });
+      }
+    }
+
+    function spellOutWord(word) {
+      return word.toUpperCase().split("").join(" ");
+    }
+
+    function startRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        messageDisplay.textContent = "Speech recognition not supported in this browser.";
+        return;
+      }
+      accumulatedTranscript = "";
+      transcriptDisplay.textContent = "";
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = true;
+      recognition.continuous = true;
+
+      maxRecognitionTimer = setTimeout(() => {
+        console.log("Max recognition time reached.");
+        recognition.stop();
+      }, 5000);
+
+      recognition.onresult = function(event) {
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          if (event.results[i].isFinal) {
+            accumulatedTranscript += event.results[i][0].transcript + " ";
+          }
+        }
+        transcriptDisplay.textContent = cleanSpokenInput(accumulatedTranscript);
+        if (recognitionTimer) clearTimeout(recognitionTimer);
+        recognitionTimer = setTimeout(() => {
+          console.log("No new input for 2 seconds. Stopping recognition.");
+          recognition.stop();
+        }, 2000);
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        messageDisplay.textContent = `Error: ${event.error}`;
+        speakText("I didn't catch that. Let's try again.", startRecognition);
+      };
+
+      recognition.onend = function() {
+        clearTimeout(maxRecognitionTimer);
+        console.log("Speech recognition ended. Accumulated transcript:", accumulatedTranscript);
+        if (accumulatedTranscript.trim() === "") {
+          messageDisplay.textContent = "I didn't catch that. Please try again.";
+          speakText("I didn't catch that. Please try again.", startRecognition);
+        } else {
+          processTranscript(accumulatedTranscript.trim());
+        }
+      };
+
+      messageDisplay.textContent = "Please spell the word out loud (say each letter clearly)...";
+      recognition.start();
+    }
+
+    function recordAnswer(isCorrect) {
+      if (!currentCard) return;
+      currentCard.attempts++;
+      if (isCorrect) {
+        currentCard.correct++;
+        currentCard.repetitions++;
+        currentCard.interval *= 2; // Double interval on correct answer.
+      } else {
+        currentCard.repetitions = 0;
+        currentCard.interval = 10; // Reset interval on an incorrect answer.
+      }
+      currentCard.nextReview = Date.now() + currentCard.interval * 1000;
+      saveFlashcards();
+      setTimeout(nextCard, 2000);
+    }
+
+    function nextCard() {
+      const now = Date.now();
+      const dueCards = flashcards.filter(card => card.nextReview <= now);
+      if (dueCards.length === 0) {
+        wordDisplay.textContent = "No cards due now. Please wait...";
+        messageDisplay.textContent = "";
+        transcriptDisplay.textContent = "";
+        setTimeout(nextCard, 5000);
+      } else {
+        currentCard = dueCards[0];
+        wordDisplay.textContent = currentCard.word;
+        messageDisplay.textContent = "(Preparing...)";
+        transcriptDisplay.textContent = "";
+        updateStats();
+        console.log("Speaking the word:", currentCard.word);
+        speakText(currentCard.word, startRecognition);
+      }
+    }
+
+    startButton.addEventListener("click", () => {
+      startButton.style.display = "none";
+      flashcardContainer.style.display = "block";
+      loadFlashcards();
+      nextCard();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Recognition Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            width: 100%;
+            height: 200px;
+            border: 1px solid black;
+        }
+        #transcript {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech Recognition Visualizer</h1>
+    <canvas id="canvas"></canvas>
+    <div id="transcript"></div>
+    
+</body>
+</html>
+
+<script>
+const canvas = document.getElementById('canvas');
+const canvasContext = canvas.getContext('2d');
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioCtx.createAnalyser();
+analyser.fftSize = 2048;
+
+const transcriptDisplay = document.getElementById('transcript');
+let accumulatedTranscript = '';
+let recognitionTimer;
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.continuous = true;
+recognition.interimResults = true;
+recognition.lang = 'en-US'; // Change this to your language as needed
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+        const source = audioCtx.createMediaStreamSource(stream);
+        source.connect(analyser);
+        startVisualization();
+        startRecognition();
+    })
+    .catch(error => {
+        console.error('Error accessing microphone:', error);
+        transcriptDisplay.textContent = 'Error accessing microphone.';
+    });
+
+function startVisualization() {
+    function visualize() {
+        requestAnimationFrame(visualize);
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+        analyser.getByteFrequencyData(dataArray);
+
+        canvasContext.fillStyle = 'rgb(200, 200, 200)';
+        canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+        const barWidth = (canvas.width / bufferLength) * 2.5;
+        let x = 0;
+
+        for (let i = 0; i < bufferLength; i++) {
+            const barHeight = dataArray[i];
+            canvasContext.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+            canvasContext.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
+            x += barWidth + 1;
+        }
+    }
+    visualize();
+}
+
+function startRecognition() {
+    recognition.onresult = function(event) {
+        console.log('Recognition result:', event); // Debugging line to check results
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            if (event.results[i].isFinal) {
+                console.log('Final result:', event.results[i][0].transcript); // Log final transcript
+                accumulatedTranscript += event.results[i][0].transcript + " ";
+            }
+        }
+        
+        transcriptDisplay.textContent = cleanSpokenInput(accumulatedTranscript);
+
+        if (recognitionTimer) clearTimeout(recognitionTimer);
+        recognitionTimer = setTimeout(() => {
+            console.log("No new input for 2 seconds. Stopping recognition.");
+            recognition.stop();
+        }, 2000);
+    };
+
+    recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        transcriptDisplay.textContent = `Error: ${event.error}. Please try using the keyboard.`;
+    };
+
+    recognition.onend = function() {
+        console.log("Speech recognition ended. Restarting...");
+        recognition.start();
+    };
+
+    recognition.start();
+}
+
+function cleanSpokenInput(input) {
+    return input.trim() ? input : "Say something...";
+}
+
+</script>

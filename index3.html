@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spelling Flashcards (Voice Mode)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f0f8ff;
+    }
+    .flashcard {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      width: 60%;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      background-color: #fff;
+    }
+    #message {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #333;
+    }
+    #statsDisplay {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    #startButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spelling Flashcards (Voice Mode)</h1>
+  <button id="startButton">Start Practice</button>
+  <div class="flashcard" id="flashcardContainer" style="display: none;">
+    <h2 id="wordDisplay"></h2>
+    <p id="message">(Waiting for voice input...)</p>
+  </div>
+  <div id="statsDisplay"></div>
+
+  <script>
+    // Sample flashcards; you can expand this list with all spelling words as needed.
+    let flashcards = [
+      {
+        word: "eight",
+        definition: "The number 8",
+        pos: "noun/number",
+        interval: 10,  // base interval in seconds (for demo purposes)
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "eighth",
+        definition: "Position after seven others",
+        pos: "adjective/noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "height",
+        definition: "How tall something is",
+        pos: "noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "weight",
+        definition: "How heavy something is",
+        pos: "noun",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "straight",
+        definition: "In one unbroken line; not curved",
+        pos: "adjective/adverb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "enough",
+        definition: "As much as is needed; sufficient",
+        pos: "adj./adv.",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "though",
+        definition: "In spite of something; however",
+        pos: "conjunction",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "thought",
+        definition: "An idea or the process of thinking",
+        pos: "noun/verb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "through",
+        definition: "Moving in one side and out the other",
+        pos: "preposition/adverb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "caught",
+        definition: "Captured or seized (past tense)",
+        pos: "verb",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      },
+      {
+        word: "naughty",
+        definition: "Behaving badly or disobediently",
+        pos: "adjective",
+        interval: 10,
+        nextReview: Date.now(),
+        repetitions: 0,
+        correct: 0,
+        attempts: 0
+      }
+      // Add more flashcards as desired...
+    ];
+
+    // Key for localStorage
+    const STORAGE_KEY = "flashcards_data";
+
+    // Load flashcards from localStorage (if available)
+    function loadFlashcards() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        flashcards = JSON.parse(stored);
+      } else {
+        saveFlashcards();
+      }
+    }
+
+    // Save flashcards data to localStorage
+    function saveFlashcards() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(flashcards));
+    }
+
+    // DOM elements
+    const wordDisplay = document.getElementById("wordDisplay");
+    const messageDisplay = document.getElementById("message");
+    const statsDisplay = document.getElementById("statsDisplay");
+    const flashcardContainer = document.getElementById("flashcardContainer");
+    const startButton = document.getElementById("startButton");
+
+    let currentCard = null;
+
+    // Update stats on screen
+    function updateStats() {
+      const total = flashcards.length;
+      const reviewed = flashcards.reduce((sum, card) => sum + card.attempts, 0);
+      const correct = flashcards.reduce((sum, card) => sum + card.correct, 0);
+      statsDisplay.textContent = `Total cards: ${total} | Attempts: ${reviewed} | Correct: ${correct}`;
+    }
+
+    // Speak a given text using speech synthesis
+    function speakText(text, callback) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.onend = function() {
+        console.log("Speech synthesis ended for:", text);
+        if (callback) callback();
+      };
+      utterance.onerror = function(e) {
+        console.error("Speech synthesis error:", e);
+        if (callback) callback();
+      };
+      speechSynthesis.speak(utterance);
+    }
+
+    // Start speech recognition to listen for the spelled word
+    function startRecognition() {
+      console.log("Starting speech recognition...");
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        messageDisplay.textContent = "Speech recognition not supported in this browser.";
+        return;
+      }
+      const recognition = new SpeechRecognition();
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      messageDisplay.textContent = "Please spell the word out loud (say each letter clearly)...";
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const spoken = event.results[0][0].transcript;
+        console.log("Speech recognition result:", spoken);
+        messageDisplay.textContent = `You said: "${spoken}"`;
+        const recognized = spoken.toLowerCase().replace(/\s/g, "");
+        const expected = currentCard.word.toLowerCase().replace(/\s/g, "");
+        if (recognized === expected) {
+          speakText("Correct", () => {
+            recordAnswer(true);
+          });
+        } else {
+          speakText(`Incorrect. The correct spelling is ${spellOutWord(currentCard.word)}`, () => {
+            recordAnswer(false);
+          });
+        }
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        messageDisplay.textContent = `Error occurred: ${event.error}`;
+        speakText("I didn't catch that. Let's try again.", startRecognition);
+      };
+
+      recognition.onend = function() {
+        console.log("Speech recognition ended.");
+        // Note: If no result was obtained, no further action is taken here.
+      };
+    }
+
+    // Spell out the word letter-by-letter (e.g., "E I G H T")
+    function spellOutWord(word) {
+      return word.toUpperCase().split("").join(" ");
+    }
+
+    // Record the answer and update spaced repetition
+    function recordAnswer(isCorrect) {
+      if (!currentCard) return;
+      currentCard.attempts++;
+      if (isCorrect) {
+        currentCard.correct++;
+        currentCard.repetitions++;
+        currentCard.interval *= 2;  // Double interval on a correct answer
+      } else {
+        currentCard.repetitions = 0;
+        currentCard.interval = 10;  // Reset interval on an incorrect answer
+      }
+      currentCard.nextReview = Date.now() + currentCard.interval * 1000;
+      saveFlashcards();
+      setTimeout(nextCard, 2000);
+    }
+
+    // Pick the next flashcard that is due for review.
+    function nextCard() {
+      const now = Date.now();
+      const dueCards = flashcards.filter(card => card.nextReview <= now);
+      if (dueCards.length === 0) {
+        wordDisplay.textContent = "No cards due now. Please wait...";
+        messageDisplay.textContent = "";
+        setTimeout(nextCard, 5000);
+      } else {
+        currentCard = dueCards[0];
+        wordDisplay.textContent = currentCard.word;
+        messageDisplay.textContent = "(Preparing...)";
+        updateStats();
+        console.log("Speaking the word:", currentCard.word);
+        speakText(currentCard.word, startRecognition);
+      }
+    }
+
+    // Initialize the app when the user clicks the Start button.
+    startButton.addEventListener("click", () => {
+      startButton.style.display = "none";
+      flashcardContainer.style.display = "block";
+      loadFlashcards();
+      nextCard();
+    });
+  </script>
+</body>
+</html>
